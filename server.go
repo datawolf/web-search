@@ -89,7 +89,7 @@ var resultsTemplate = template.Must(template.New("results").Parse(`
 <body>
 <ol>
 {{range .Results}}
-<li>{{.Title}} - <a hre="{{.URL}}">{{.URL}}</a></li>
+<li>{{.Title}} - <a href="{{.URL}}">{{.URL}}</a></li>
 {{end}}
 </ol>
 <p>{{len .Results}} results in {{.Elapsed}}; timeout {{.Timeout}}</p>
