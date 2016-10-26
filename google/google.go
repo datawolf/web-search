@@ -54,7 +54,7 @@ func Search(ctx context.Context, query string) (Results, error) {
 		}
 
 		for _, res := range data.Items {
-			results = append(results, Result{Title: res.HTMLTitle, URL: res.HTMLFormattedURL})
+			results = append(results, Result{Title: res.Title, URL: res.FormattedURL})
 		}
 
 		return nil
