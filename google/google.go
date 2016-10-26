@@ -47,21 +47,14 @@ func Search(ctx context.Context, query string) (Results, error) {
 		defer resp.Body.Close()
 
 		// Parse the JSON search result
-		var data struct {
-			Items struct {
-				Results []struct {
-					HtmlTitle        string
-					HtmlFormattedUrl string
-				}
-			}
-		}
+		var data ResponseData
 
 		if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
 			return err
 		}
 
-		for _, res := range data.Items.Results {
-			results = append(results, Result{Title: res.HtmlTitle, URL: res.HtmlFormattedUrl})
+		for _, res := range data.Items {
+			results = append(results, Result{Title: res.HTMLTitle, URL: res.HTMLFormattedURL})
 		}
 
 		return nil
