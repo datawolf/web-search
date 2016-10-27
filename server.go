@@ -107,12 +107,14 @@ var resultsTemplate = template.Must(template.New("results").Parse(`
 
 var index = `
 <html>
-<header>自定义搜索引擎--Linux相关</header>
+  <head>
+	<title> 自定义搜索引擎--Linux相关 </title>
+  </head>
 <body>
-<h2> 自定义搜索引擎--Linux相关</h2>
-<form action="/search">
-<input type="text" name="q"> <input type="submit" value="搜一下">
-</form>
+  <h2> 自定义搜索引擎--Linux相关</h2>
+  <form action="/search">
+    <input type="text" name="q"> <input type="submit" value="搜一下">
+  </form>
 </body>
 </html>
 `
