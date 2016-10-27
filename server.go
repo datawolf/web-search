@@ -23,7 +23,15 @@ import (
 
 func main() {
 	http.HandleFunc("/search", handleSearch)
+	http.HandleFunc("/", showIndex)
 	log.Fatal(http.ListenAndServe(":8004", nil))
+}
+
+// showIndex return the index to client
+func showIndex(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8") // normal html header
+	w.WriteHeader(http.StatusOK)                               // Write http status code
+	w.Write([]byte(index))
 }
 
 // handleSearch handles URLs like /search>q=golang&timeout=1s by forwarding the
@@ -96,3 +104,15 @@ var resultsTemplate = template.Must(template.New("results").Parse(`
 </body>
 </html>
 `))
+
+var index = `
+<html>
+<header>自定义搜索引擎--Linux相关</header>
+<body>
+<h2> 自定义搜索引擎--Linux相关</h2>
+<form action="/search">
+<input type="text" name="q"> <input type="submit" value="搜一下">
+</form>
+</body>
+</html>
+`
